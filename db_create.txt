@@ -1,0 +1,45 @@
+CREATE TABLE nastavnik (
+    id SERIAL PRIMARY KEY,
+    ime VARCHAR(255),
+    prezime VARCHAR(255)
+);
+
+CREATE TABLE razred (
+    id SERIAL PRIMARY KEY,
+    oznaka VARCHAR(255),
+    naziv VARCHAR(255)
+);
+
+CREATE TABLE predmet (
+    id SERIAL PRIMARY KEY,
+    oznaka VARCHAR(255),
+    naziv VARCHAR(255)
+);
+
+CREATE TABLE ucenik (
+    id SERIAL PRIMARY KEY,
+    ime VARCHAR(255),
+    prezime VARCHAR(255),
+    email VARCHAR(255),
+    telefon VARCHAR(255),
+    dob DATE,
+    razred_id INTEGER REFERENCES razred(id)
+);
+
+CREATE TABLE ocjena (
+    id SERIAL PRIMARY KEY,
+    vrijednost INTEGER,
+    vrsta VARCHAR(255),
+    komentar TEXT,
+    datum DATE,
+    ucenik_id INTEGER REFERENCES ucenik(id),
+    predmet_id INTEGER REFERENCES predmet(id),
+    nastavnik_id INTEGER REFERENCES nastavnik(id)
+);
+
+CREATE TABLE nastavnik_razred_predmet (
+    id SERIAL PRIMARY KEY,
+    nastavnik_id INTEGER REFERENCES nastavnik(id),
+    razred_id INTEGER REFERENCES razred(id),
+    predmet_id INTEGER REFERENCES predmet(id)
+);
