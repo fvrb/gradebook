@@ -14,3 +14,5 @@
 * Add a relation between class and its homeroom teacher
 
 ## Screenshots
+<img src="images/student_list.png" alt="Students list" width="800"/>
+<img src="images/student_detail.png" alt="Student details" width="800"/>
